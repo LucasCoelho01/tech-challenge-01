@@ -24,11 +24,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
-    @Override
-    public User getUserById(Long id) {
-        return null;
-    }
+//    @Override
+//    public User getUserByCpf(String cpf) {
+//        return userRepository.getUserByCpf(cpf);
+//    }
 }

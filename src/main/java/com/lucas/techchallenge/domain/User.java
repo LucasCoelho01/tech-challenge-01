@@ -11,10 +11,18 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String userName;
-    private String email;
+    private String cpf;
 
-    public User (String userName, String email) {
+    public User() {}
+
+    public User (String userName, String cpf) {
         this.userName = userName;
-        this.email = email;
+        this.cpf = cpf;
     }
+
+//    public User (Long id, String userName, String cpf) {
+//        this.id = id;
+//        this.userName = userName;
+//        this.cpf = cpf;
+//    }
 }
