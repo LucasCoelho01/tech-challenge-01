@@ -9,5 +9,6 @@ import java.util.List;
 public interface UserService {
     User createUser(String username, String email);
     List<User> getAllUsers();
-    //User getUserByCpf(String cpf);
+
+    User findByCpf(String cpf);
 }

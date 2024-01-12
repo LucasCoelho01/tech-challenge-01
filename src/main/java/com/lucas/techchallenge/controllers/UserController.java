@@ -26,4 +26,9 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<User> findUserByCpf(@PathVariable String cpf) {
+        return new ResponseEntity<>(userService.findByCpf(cpf), HttpStatus.OK);
+    }
 }

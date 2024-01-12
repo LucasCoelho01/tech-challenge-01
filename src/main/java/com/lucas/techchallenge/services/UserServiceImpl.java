@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-//    @Override
-//    public User getUserByCpf(String cpf) {
-//        return userRepository.getUserByCpf(cpf);
-//    }
+    @Override
+    public User findByCpf(String cpf) {
+        return userRepository.findByCpf(cpf);
+    }
 }

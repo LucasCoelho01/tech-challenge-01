@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-//    @Query("select u from users u where u.cpf = ?1")
-//    User getUserByCpf(String cpf);
+    User findByCpf(String cpf);
 }
