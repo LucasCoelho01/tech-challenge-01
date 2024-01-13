@@ -15,7 +15,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     public CustomerRepository customerRepository;
-    List<Customer> users = new ArrayList<Customer>();
     @Override
     public Customer createCustomer(String userName, String email) {
         Customer user = new Customer(userName, email);
