@@ -1,6 +1,7 @@
 package com.lucas.techchallenge.services;
 
 import com.lucas.techchallenge.domain.Customer;
+import com.lucas.techchallenge.domain.dto.CustomerDto;
 import com.lucas.techchallenge.ports.repositories.CustomerRepository;
 import com.lucas.techchallenge.ports.services.CustomerService;
 
@@ -16,9 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerRepository customerRepository;
     @Override
-    public Customer createCustomer(String userName, String email) {
-        Customer user = new Customer(userName, email);
-        return customerRepository.save(user);
+    public Customer createCustomer(CustomerDto customerDto) {
+        Customer customer = new Customer(customerDto);
+        return customerRepository.save(customer);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.lucas.techchallenge.domain;
 
+import com.lucas.techchallenge.domain.dto.CustomerDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,8 +16,8 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer (String customerName, String cpf) {
-        this.customerName = customerName;
-        this.cpf = cpf;
+    public Customer (CustomerDto customerDto) {
+        this.customerName = customerDto.getCustomerName();
+        this.cpf = customerDto.getCpf();
     }
 }
