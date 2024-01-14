@@ -32,12 +32,13 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Optional<Product>> findProductById(@PathVariable Long id) {
+    public ResponseEntity<Product> findProductById(@PathVariable Long id) {
         return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
     }
 
-//    @PutMapping()
-//    public ResponseEntity<Optional<Product>> editProduct(@RequestBody ProductDto productDto) {
-//
-//    }
+    @PutMapping("/id/{id}")
+    public ResponseEntity<?> editProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
+        Product editedProduct = productService.editProduct(id, productDto);
+        return new ResponseEntity<>(editedProduct, HttpStatus.OK);
+    }
 }
