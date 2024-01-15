@@ -12,7 +12,7 @@ public interface ProductService {
     Product findById(Long id);
     List<Product> getAllProducts();
 
-    Product editProduct(Long id, ProductDto productDto);
+    Product editProduct(Long id, ProductDto productDto) throws Exception;
 
     void deleteProduct(ProductDto productDto);
 }

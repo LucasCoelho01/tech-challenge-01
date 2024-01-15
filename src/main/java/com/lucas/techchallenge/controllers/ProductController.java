@@ -1,8 +1,7 @@
 package com.lucas.techchallenge.controllers;
 
-import com.lucas.techchallenge.domain.Customer;
+import com.google.gson.Gson;
 import com.lucas.techchallenge.domain.Product;
-import com.lucas.techchallenge.domain.dto.CustomerDto;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 import com.lucas.techchallenge.ports.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/products")
@@ -32,13 +31,24 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Product> findProductById(@PathVariable Long id) {
-        return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
+    public ResponseEntity<?> findProductById(@PathVariable Long id) {
+        Product product = productService.findById(id);
+
+        if (Objects.isNull(product.getId())) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PutMapping("/id/{id}")
-    public ResponseEntity<?> editProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
+    public ResponseEntity<?> editProduct(@PathVariable Long id, @RequestBody ProductDto productDto) throws Exception {
         Product editedProduct = productService.editProduct(id, productDto);
+
+        if (Objects.isNull(editedProduct.getId())) {
+            return new ResponseEntity<>("Product not found", HttpStatus.NO_CONTENT);
+        }
+
         return new ResponseEntity<>(editedProduct, HttpStatus.OK);
     }
 }
