@@ -33,6 +33,7 @@ class CustomerServiceTest {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setCustomerName("Lucas");
         customerDto.setCpf("12345678910");
+
         when(customerRepository.save(any(Customer.class))).thenReturn(new Customer(customerDto));
 
         var customer = customerService.createCustomer(customerDto);
