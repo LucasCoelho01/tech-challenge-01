@@ -51,4 +51,15 @@ public class ProductController {
 
         return new ResponseEntity<>(editedProduct, HttpStatus.OK);
     }
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        boolean productWasDeleted = productService.deleteProduct(id);
+
+        if (productWasDeleted) {
+            return new ResponseEntity<>("Product deleted", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Product not found", HttpStatus.NO_CONTENT);
+    }
 }

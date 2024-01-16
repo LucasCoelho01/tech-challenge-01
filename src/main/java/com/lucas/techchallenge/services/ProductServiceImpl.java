@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product editProduct(Long id, ProductDto productDto){
-            Product productFound = findById(id);
+        Product productFound = findById(id);
 
         if (Objects.isNull(productFound.getId())) {
             return productFound;
@@ -48,7 +48,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(ProductDto productDto) {
+    public boolean deleteProduct(Long id) {
+        Product productFound = findById(id);
 
+        if (Objects.isNull(productFound.getId())) {
+            return false;
+        }
+
+        productRepository.delete(productFound);
+        return true;
     }
 }
