@@ -1,8 +1,11 @@
 package com.lucas.techchallenge.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lucas.techchallenge.domain.dto.CategoryDto;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -12,6 +15,10 @@ public class Category {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String categoryName;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private Set<Product> products;
 
     public Category() {}
 

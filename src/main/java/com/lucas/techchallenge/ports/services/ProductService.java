@@ -4,7 +4,6 @@ import com.lucas.techchallenge.domain.Product;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ProductService {
     Product createProduct(ProductDto productDto);

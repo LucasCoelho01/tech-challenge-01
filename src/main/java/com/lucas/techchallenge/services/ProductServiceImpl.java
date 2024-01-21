@@ -1,8 +1,10 @@
 package com.lucas.techchallenge.services;
 
+import com.lucas.techchallenge.domain.Category;
 import com.lucas.techchallenge.domain.Product;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 import com.lucas.techchallenge.ports.repositories.ProductRepository;
+import com.lucas.techchallenge.ports.services.CategoryService;
 import com.lucas.techchallenge.ports.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     public ProductRepository productRepository;
+
+    private CategoryService categoryService;
     @Override
     public Product createProduct(ProductDto productDto) {
         Product product = new Product(productDto);

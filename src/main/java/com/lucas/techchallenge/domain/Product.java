@@ -16,6 +16,10 @@ public class Product {
     private String productName;
     private BigDecimal productPrice;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
+
     public Product() {}
 
     public Product(ProductDto productDto) {
