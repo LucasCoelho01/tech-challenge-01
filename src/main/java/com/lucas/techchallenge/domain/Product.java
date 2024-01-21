@@ -1,10 +1,12 @@
 package com.lucas.techchallenge.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,6 +21,10 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @ManyToMany(mappedBy = "products")
+    @JsonIgnoreProperties("products")
+    private Set<Order> orders;
 
     public Product() {}
 
