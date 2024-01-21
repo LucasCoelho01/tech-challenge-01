@@ -1,5 +1,6 @@
 package com.lucas.techchallenge.ports.services;
 
+import com.lucas.techchallenge.domain.Category;
 import com.lucas.techchallenge.domain.Product;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 
@@ -16,4 +17,6 @@ public interface ProductService {
     boolean deleteProduct(Long id);
 
     Product updateCategoryOfProduct(Product product, Long category_id);
+
+    List<Product> listProductsByCategory(Long category_id);
 }

@@ -1,6 +1,5 @@
 package com.lucas.techchallenge.controllers;
 
-import com.google.gson.Gson;
 import com.lucas.techchallenge.domain.Product;
 import com.lucas.techchallenge.domain.dto.ProductDto;
 import com.lucas.techchallenge.ports.services.ProductService;
@@ -74,5 +73,10 @@ public class ProductController {
         }
 
         return new ResponseEntity<>("Product not found", HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/category_id/{category_id}")
+    public ResponseEntity<?> listProductsByCategory(@PathVariable Long category_id) {
+        return new ResponseEntity<>(productService.listProductsByCategory(category_id), HttpStatus.OK);
     }
 }
