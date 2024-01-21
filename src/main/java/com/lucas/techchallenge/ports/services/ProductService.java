@@ -14,4 +14,6 @@ public interface ProductService {
     Product editProduct(Long id, ProductDto productDto) throws Exception;
 
     boolean deleteProduct(Long id);
+
+    Product updateCategoryOfProduct(Product product, Long category_id);
 }

@@ -19,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     public ProductRepository productRepository;
 
+    @Autowired
     private CategoryService categoryService;
     @Override
     public Product createProduct(ProductDto productDto) {
@@ -61,5 +62,14 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.delete(productFound);
         return true;
+    }
+
+    @Override
+    public Product updateCategoryOfProduct(Product product, Long category_id) {
+        Category category = categoryService.findById(category_id);
+
+        product.setCategory(category);
+
+        return productRepository.save(product);
     }
 }

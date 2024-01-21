@@ -52,6 +52,19 @@ public class ProductController {
         return new ResponseEntity<>(editedProduct, HttpStatus.OK);
     }
 
+    @PutMapping("/id/update/category/{id}/{category_id}")
+    public ResponseEntity<?> updateCategoryOfProduct(@PathVariable Long id, @PathVariable Long category_id) throws Exception {
+        Product productFound = productService.findById(id);
+
+        if (Objects.isNull(productFound.getId())) {
+            return new ResponseEntity<>("Product not found", HttpStatus.NO_CONTENT);
+        }
+
+        Product updatedProduct = productService.updateCategoryOfProduct(productFound, category_id);
+
+        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+    }
+
     @DeleteMapping("/id/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
         boolean productWasDeleted = productService.deleteProduct(id);
