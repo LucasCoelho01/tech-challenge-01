@@ -22,10 +22,6 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
-    @ManyToMany(mappedBy = "products")
-    @JsonIgnoreProperties("products")
-    private Set<Order> orders;
-
     public Product() {}
 
     public Product(ProductDto productDto) {

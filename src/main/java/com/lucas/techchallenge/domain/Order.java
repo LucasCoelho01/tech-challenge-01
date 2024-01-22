@@ -18,10 +18,9 @@ public class Order {
     @OneToMany()
     @JoinTable(
             name = "order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
     )
-    @JsonIgnoreProperties("orders")
     private Set<Product> products;
 
     public Order() {
