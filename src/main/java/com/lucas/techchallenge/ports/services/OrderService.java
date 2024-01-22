@@ -10,4 +10,8 @@ public interface OrderService {
     Order createOrder();
 
     List<Order> getAllOrders();
+
+    Order findOrderById(Long id);
+
+    Order addProducttoOrder(Order order, Long product_id);
 }
