@@ -54,4 +54,17 @@ public class OrderController {
 
         return new ResponseEntity<>(orderUpdated, HttpStatus.OK);
     }
+
+    @PutMapping("/checkout/{order_id}")
+    public ResponseEntity<?> checkputOrder(@PathVariable Long order_id) {
+        Order orderFound = orderService.findOrderById(order_id);
+
+        if (Objects.isNull(orderFound.getId())) {
+            return new ResponseEntity<>("Order not found", HttpStatus.NO_CONTENT);
+        }
+
+        Order orderUpdated = orderService.checkoutOrder(orderFound, "Pedido enviado");
+
+        return new ResponseEntity<>(orderUpdated, HttpStatus.OK);
+    }
 }

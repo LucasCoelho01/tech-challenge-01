@@ -43,4 +43,11 @@ public class OrderServiceImpl implements OrderService {
 
         return orderRepository.save(order);
     }
+
+    @Override
+    public Order checkoutOrder(Order order, String status) {
+        order.setStatus(status);
+
+        return orderRepository.save(order);
+    }
 }

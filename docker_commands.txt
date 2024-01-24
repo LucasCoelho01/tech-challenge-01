@@ -1,3 +1,5 @@
 docker build -t techchallenge .
 
 docker run -p8080:8080  --name techchallenge techchallenge
+
+docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
