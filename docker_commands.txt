@@ -9,3 +9,6 @@ docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgre
 
 -- Command to change the name of the image to pull it to Docker Hub
 docker tag techchallenge1 lucasgoleiro/techchallenge1
+
+-- Command to run Docker Compose file
+docker compose up -d
