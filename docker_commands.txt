@@ -1,0 +1,14 @@
+-- Command to build a Docker image
+docker build -t techchallenge .
+
+-- Command to run the Docker image
+docker run -p8080:8080  --name techchallenge techchallenge
+
+-- Commando to run a postgres instance
+docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+
+-- Command to change the name of the image to pull it to Docker Hub
+docker tag techchallenge1 lucasgoleiro/techchallenge1
+
+-- Command to run Docker Compose file
+docker compose up -d
